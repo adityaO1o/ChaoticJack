@@ -10,7 +10,7 @@ const ServicesSection = () => {
   const services = [
     {
       id: 'social',
-      name: 'Social media marketing',
+      name: 'Social Media Marketing',
       description: 'Finding the balance between staying current and relying on proven strategies is essential for staying competitive in the ever-changing landscape of marketing.',
       features: [
         'Social Media Design',
@@ -24,7 +24,7 @@ const ServicesSection = () => {
     },
     {
       id: 'seo',
-      name: 'Search engine optimization',
+      name: 'Search Engine Optimization',
       description: 'Drive organic traffic and improve visibility with our proven SEO strategies that focus on sustainable growth and long-term results.',
       features: [
         'Technical SEO audits',
@@ -38,7 +38,7 @@ const ServicesSection = () => {
     },
     {
       id: 'paid',
-      name: 'Paid search marketing',
+      name: 'Paid Search Marketing',
       description: 'Maximize your ROI with targeted PPC campaigns that deliver qualified traffic and conversions to achieve your business objectives.',
       features: [
         'Google & Bing Ads',
@@ -69,64 +69,59 @@ const ServicesSection = () => {
   const activeServiceData = services.find(service => service.id === activeService) || services[0];
 
   return (
-    
-    <section className="py-7 bg-white">
+    <section className="py-10 bg-gradient-to-br from-white via-gray-50 to-chaotic-blue/10">
       <div className="container mx-auto px-4 md:px-6">
-      <div className="max-w-4xl mx-auto mb-12">
-<h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center font-syne mb-6">Our Services</h2>
+        <div className="max-w-4xl mx-auto mb-12">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center font-syne mb-6">Our Services</h2>
           <p className="text-lg text-gray-700 font-kanit text-center">
             We deliver business impact through digital marketing with a combination of intellectual curiosity, industry experience, urgency, and precision.
           </p>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-12 rounded-[36px] overflow-hidden shadow-xl">
-          <div className="lg:col-span-4 bg-black text-white p-10">
-            <nav className="space-y-6">
-              {services.map((service) => (
-                <div
-                  key={service.id}
-                  onClick={() => setActiveService(service.id)}
-                  className={cn(
-                    'cursor-pointer transition-all duration-300 transform',
-                    service.id === activeService ? 'scale-105' : 'hover:translate-x-2'
-                  )}
-                >
-                  <div
-                    className={cn(
-                      'flex items-center justify-between rounded-full px-6 py-4 text-sm font-kanit',
-                      service.id === activeService
-                        ? 'bg-[#216ffe] text-white shadow-md'
-                        : 'text-white hover:text-white hover:bg-gray-900'
-                    )}
-                  >
-                    {service.name}
-                    {service.id === activeService && <ArrowRight className="h-5 w-5" />}
-                  </div>
-                </div>
-              ))}
-            </nav>
+        </div>
+
+        <div className="flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl bg-white/80 ">
+          {/* Service Selector */}
+          <div className="lg:w-1/3 w-full bg-black/90 text-white p-6 flex flex-row lg:flex-col gap-2 lg:gap-6 overflow-x-auto lg:overflow-visible">
+            {services.map((service) => (
+              <button
+                key={service.id}
+                onClick={() => setActiveService(service.id)}
+                className={cn(
+                  'flex-1 min-w-[220px] lg:min-w-0 flex items-center justify-between rounded-full px-6 py-4 text-sm font-kanit transition-all duration-300 font-bold focus:outline-none',
+                  service.id === activeService
+                    ? 'bg-chaotic-blue text-white shadow-lg scale-105'
+                    : 'text-white hover:text-chaotic-blue hover:bg-white/10'
+                )}
+                style={{ transition: 'background 0.3s, color 0.3s, transform 0.2s' }}
+              >
+                {service.name}
+                {service.id === activeService && <ArrowRight className="h-5 w-5" />}
+              </button>
+            ))}
           </div>
 
-          <div className="lg:col-span-8 bg-[#f7f7fb] p-10 flex flex-col justify-center">
+          {/* Service Details */}
+          <div className="lg:w-2/3 w-full bg-white/80 p-8 flex flex-col justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
-                <h3 className="text-xl font-syne  text-black">{activeServiceData.description}</h3>
+                <h3 className="text-2xl font-syne text-black font-bold mb-2">{activeServiceData.name}</h3>
+                <p className="text-base text-gray-700 font-kanit">{activeServiceData.description}</p>
                 <ul className="space-y-3">
                   {activeServiceData.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <CheckCircle className="h-5 w-5 text-[#216ffe] mt-1" />
+                      <CheckCircle className="h-5 w-5 text-chaotic-blue mt-1" />
                       <span className="text-sm text-black font-kanit">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                <a href="#" className="text-xs font-kanit underline text-black">LEARN MORE</a>
+                <a href="#" className="inline-block text-xs font-kanit underline text-chaotic-blue hover:text-black transition">LEARN MORE</a>
               </div>
 
               <div className="flex flex-col items-center justify-center">
                 <ProgressCircle
                   value={activeServiceData.percentage}
                   max={100}
-                  size={160}
-                  strokeWidth={12}
+                  size={140}
+                  strokeWidth={10}
                   color="#216ffe"
                   backgroundColor="#ffffff"
                   label={<span className="text-3xl font-bold text-black">{activeServiceData.percentage}%</span>}
