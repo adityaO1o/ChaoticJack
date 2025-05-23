@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState(''); // <-- Added phone state
   const [animateCards, setAnimateCards] = useState(false);
 
   const budgetData = [
@@ -37,7 +38,7 @@ const Hero = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Email submitted:', email);
+    console.log('Email submitted:', email, 'Phone:', phone);
   };
 
   const containerVariants = {
@@ -82,29 +83,55 @@ const Hero = () => {
             <p className="text-lg md:text-xl font-kanit text-gray-700">
               It's your turn to shine when we put the spotlight on your brand. We help get the attention and revenues your business deserves in the digital world.
             </p>
-            <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
-              <div className="w-full flex justify-center">
-                <div className="w-[50vw] max-w-full bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg flex overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]">
+            {/* Responsive Form */}
+           <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
+                <div
+                  className="
+      bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg
+      flex flex-col md:flex-row gap-2 md:gap-0
+      overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
+    "
+                >
                   <input
                     type="email"
                     placeholder="Email"
-                    className="flex-1 py-2 px-4 focus:outline-none rounded-l-xl font-kanit"
+                    className="
+        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+        rounded-t-xl md:rounded-t-none md:rounded-l-xl
+      "
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                  <Button
+
+                  <input
+                    type="tel"
+                    placeholder="Phone"
+                    className="
+        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+        border-t md:border-t-0 md:border-l border-black
+        rounded-none
+      "
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+
+                  <button
                     type="submit"
-                    className="bg-black text-white border-none hover:bg-chaotic-blue transition-colors rounded-none px-8 font-kanit"
+                    className="
+        bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+        px-4 font-kanit w-full md:w-auto
+        rounded-b-xl md:rounded-b-none md:rounded-r-xl
+      "
                   >
-                    NEXT
-                  </Button>
+                    GET A FREE AUDIT
+                  </button>
                 </div>
-              </div>
-            </form>
+              </form>
 
 
 
+            {/* End Responsive Form */}
           </motion.div>
 
           <motion.div

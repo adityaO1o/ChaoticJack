@@ -59,24 +59,40 @@ const ConsultationSection = () => {
           </div>
 
           {/* CTA Button and Email Form */}
-          <form onSubmit={handleSubmit} className="mt-4 animate-slide-up max-w-xl mx-auto mb-12">
-            <div className="bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg flex overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]">
-              <input
-                type="email"
-                placeholder="Email"
-                className="flex-1 py-2 px-4 focus:outline-none rounded-l-xl font-kanit"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <Button
-                type="submit"
-                className="bg-black text-white border-none hover:bg-chaotic-blue transition-colors rounded-none px-8 font-kanit"
+          <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
+            <div className="w-full flex justify-center">
+              <div
+                className="
+        w-full max-w-md 
+        bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg 
+        flex flex-col md:flex-row gap-2 md:gap-0
+        transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
+      "
               >
-                NEXT
-              </Button>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="
+          flex-1 py-2 px-4 focus:outline-none 
+          rounded-t-xl md:rounded-t-none md:rounded-l-xl font-kanit
+        "
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <Button
+                  type="submit"
+                  className="
+          bg-black text-white border-none hover:bg-chaotic-blue transition-colors
+          rounded-b-xl md:rounded-b-none md:rounded-r-xl px-8 font-kanit w-full md:w-auto
+        "
+                >
+                  NEXT
+                </Button>
+              </div>
             </div>
           </form>
+
           <div className="text-center">
             <Button
               className="bg-chaotic-blue text-white hover:bg-black hover:text-white transition px-10 py-6 rounded-full text-lg font-kanit shadow-lg mb-6"
