@@ -298,7 +298,7 @@ const Work = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-             <span className="text-chaotic-blue">Our Process </span>: How We Work
+              <span className="text-chaotic-blue">Our Process </span>: How We Work
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               {processSteps.map((step, idx) => (
@@ -364,14 +364,14 @@ const Work = () => {
               ))}
             </motion.div>
             <div className="text-center">
-             <Link to="/who-we-are">
-              <Button
-                variant="outline"
-                className="rounded-none border border-black text-black hover:bg-black hover:text-white transition-colors font-kanit"
-              >
-                VIEW OUR FULL PORTFOLIO <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              </Link> 
+              <Link to="/who-we-are">
+                <Button
+                  variant="outline"
+                  className="rounded-none border border-black text-black hover:bg-black hover:text-white transition-colors font-kanit"
+                >
+                  VIEW OUR FULL PORTFOLIO <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -425,74 +425,77 @@ const Work = () => {
                 </div>
               </Carousel>
             </div>
-             <div className="text-center mb-10">
-            <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
-            <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
-            <div className="flex justify-center mb-6">
-              <a
-                href="tel:9541457327"
-                className="
+            <div className="text-center mb-10">
+              <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
+              <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
+              <div className="flex justify-center mb-6">
+                <a
+                  href="tel:9541457327"
+                  className="
       inline-flex items-center gap-2 px-4 py-2
       bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
       transition-colors duration-200
       hover:bg-black focus:bg-chaotic-blue
       cursor-pointer
     "
-                aria-label="Call us at 9541457327"
+                  aria-label="Call us at 9541457327"
+                >
+                  <Phone className="w-5 h-5" />
+                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+                </a>
+              </div>
+              {/* Cool Form */}
+              <form
+                onSubmit={handleSubmit}
+                className="
+    bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+    flex flex-col md:flex-row gap-2 md:gap-0
+    overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
+    w-full md:w-[50vw] mx-auto
+  "
               >
-                <Phone className="w-5 h-5" />
-                Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
-              </a>
-            </div>
-            {/* Cool Form */}
-            <form
-              onSubmit={handleSubmit}
-              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
-                         flex flex-col md:flex-row gap-2 md:gap-0
-                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
-            >
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={handleChange}
-                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-                           border-t md:border-t-0 md:border-l border-black rounded-none"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
-             px-4 py-2 font-kanit w-full md:w-auto 
-             rounded-xl"
-                disabled={submitting}
-              >
-                {submitting ? 'Submitting...' : 'Submit'}
-              </button>
-            </form>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+               rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+               border-t md:border-t-0 md:border-l border-black rounded-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+               px-4 py-2 font-kanit w-full md:w-auto 
+               rounded-xl"
+                  disabled={submitting}
+                >
+                  {submitting ? 'Submitting...' : 'Submit'}
+                </button>
+              </form>
 
-            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
-            <div className="flex flex-col items-center mt-4 mb-8">
-              <h3 className="text-sm font-syne font-bold mb-2">
-                A PARTNER NOT A VENDOR
-              </h3>
+              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+              <div className="flex flex-col items-center mt-4 mb-8">
+                <h3 className="text-sm font-syne font-bold mb-2">
+                  A PARTNER NOT A VENDOR
+                </h3>
+              </div>
             </div>
-          </div>
           </div>
         </section>
 
-        
+
       </main>
 
       <Footer />
