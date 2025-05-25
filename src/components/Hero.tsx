@@ -136,7 +136,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-syne leading-tight">
-              Creative marketing that drives revenue
+              Creative marketing that drives <span className="text-chaotic-blue">revenue</span>
             </h1>
             <p className="text-lg md:text-xl font-kanit text-gray-700">
               It's your turn to shine when we put the spotlight on your brand. We help get the attention and revenues your business deserves in the digital world.

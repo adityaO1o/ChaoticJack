@@ -78,7 +78,7 @@ const whyChooseUs = [
   {
     icon: <Lightbulb className="text-chaotic-blue" size={28} />,
     title: "Creative + Data-Driven",
-    description: "We blend bold ideas with analytics to deliver measurable results."
+    description: "We blend bold ideas with analytics to deliver measurable results that drives revenue."
   },
 ];
 
@@ -239,12 +239,12 @@ const MainPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold font-syne mb-8 flex items-center gap-3">
-                <Users className="text-chaotic-blue" size={36} />
+              <h1 className="text-chaotic-blue text-4xl md:text-5xl font-bold font-syne mb-8 flex items-center gap-3">
+                <Users className="text-black" size={36} />
                 Who We Are
               </h1>
               <h2 className="text-2xl md:text-3xl font-syne font-bold mb-6">
-                Digital Marketing Solutions Designed to Drive Revenue
+                Digital Marketing Solutions Designed to <span className="text-chaotic-blue">Growth</span>
               </h2>
               <p className="text-lg font-kanit text-gray-700 mb-8">
                 Founded on the belief that marketing transforms businesses, Chaotic Jack partners with high-growth startups and industry leaders globally. We combine creative vision with performance expertise to help brands dominate in the digital world.
@@ -285,7 +285,7 @@ const MainPage: React.FC = () => {
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-              Our Core Values
+              <span className="text-chaotic-blue">Our Core</span> Values
             </h2>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
@@ -330,7 +330,7 @@ const MainPage: React.FC = () => {
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10 flex items-center justify-center gap-2">
               <Lightbulb className="text-chaotic-blue" size={24} />
-              How We Work
+              How <span className="text-chaotic-blue">We Work</span>
             </h2>
             {/* Track with arrows */}
             <div className="relative flex flex-col md:flex-row items-center justify-between gap-12 md:gap-0 max-w-5xl mx-auto">
@@ -372,7 +372,7 @@ const MainPage: React.FC = () => {
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-              Our Services
+              Our <span className="text-chaotic-blue">Services</span>
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {services.map((service, idx) => (
@@ -389,7 +389,7 @@ const MainPage: React.FC = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-8">
-              Meet Our Team
+              Meet <span className="text-chaotic-blue">Our Team</span>
             </h2>
             <p className="text-lg font-kanit text-gray-700 text-center mb-10 max-w-3xl mx-auto">
               A team of passionate marketers, strategists, and creators focused on your brand's growth.
@@ -421,7 +421,7 @@ const MainPage: React.FC = () => {
             <div className="text-center mb-8">
               <h3 className="text-2xl font-syne font-bold mb-2 flex items-center justify-center gap-2">
                 <MessageCircle className="text-chaotic-blue" size={22} />
-                What Our Clients Say
+                What <span className="text-chaotic-blue">Our Clients</span> Say
               </h3>
               <p className="text-sm font-kanit text-gray-700 mb-4">5000+ verified client reviews</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
@@ -446,69 +446,70 @@ const MainPage: React.FC = () => {
               </div>
             </div>
             {/* CTA */}
-            <div className="text-center mt-10">
-              <h4 className="font-syne font-bold text-xl mb-2 flex items-center justify-center gap-2">
-                <Phone className="text-chaotic-blue" size={20} />
-                Book a Free Strategy Session
-              </h4>
-              <div className="flex justify-center mb-4">
-                <a
-                  href="tel:9541457327"
-                  className="
+             <div className="text-center mb-10">
+            <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
+            <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
+            <div className="flex justify-center mb-6">
+              <a
+                href="tel:9541457327"
+                className="
       inline-flex items-center gap-2 px-4 py-2
-      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
       transition-colors duration-200
-      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      hover:bg-black focus:bg-chaotic-blue
       cursor-pointer
     "
-                  aria-label="Call us at 9541457327"
-                >
-                  <Phone className="w-5 h-5" />
-                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
-                </a>
-              </div>
-              <p className="font-kanit text-gray-700 mb-4">
-                Ready to grow? Let’s talk about your goals and how we can help you achieve them.
-              </p>
-              <form
-                onSubmit={handleSubmit}
-                className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                aria-label="Call us at 9541457327"
+              >
+                <Phone className="w-5 h-5" />
+                Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+              </a>
+            </div>
+            {/* Cool Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
                          overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            rounded-t-xl md:rounded-t-none md:rounded-l-xl"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            border-t md:border-t-0 md:border-l border-black rounded-none"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
              px-4 py-2 font-kanit w-full md:w-auto 
              rounded-xl"
-                  disabled={submitting}
-                >
-                  {submitting ? 'Submitting...' : 'Submit'}
-                </button>
-              </form>
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
 
-              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+            <div className="flex flex-col items-center mt-4 mb-8">
+              <h3 className="text-sm font-syne font-bold mb-2">
+                A PARTNER NOT A VENDOR
+              </h3>
             </div>
+          </div>
           </div>
         </section>
 

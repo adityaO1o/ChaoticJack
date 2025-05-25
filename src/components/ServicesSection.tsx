@@ -72,7 +72,7 @@ const ServicesSection = () => {
     <section className="py-10 bg-gradient-to-br from-white via-gray-50 to-chaotic-blue/10">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-4xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center font-syne mb-6">Our Services</h2>
+          <h2 className="text-black text-3xl md:text-4xl lg:text-5xl font-bold text-center font-syne mb-6">Our <span className="text-chaotic-blue">Services</span></h2>
           <p className="text-lg text-gray-700 font-kanit text-center">
             We deliver business impact through digital marketing with a combination of intellectual curiosity, industry experience, urgency, and precision.
           </p>
@@ -103,7 +103,7 @@ const ServicesSection = () => {
           <div className="lg:w-2/3 w-full bg-white/80 p-8 flex flex-col justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="space-y-6">
-                <h3 className="text-2xl font-syne text-black font-bold mb-2">{activeServiceData.name}</h3>
+                <h3 className="text-2xl font-syne text-chaotic-blue font-bold mb-2">{activeServiceData.name}</h3>
                 <p className="text-base text-gray-700 font-kanit">{activeServiceData.description}</p>
                 <ul className="space-y-3">
                   {activeServiceData.features.map((feature, idx) => (

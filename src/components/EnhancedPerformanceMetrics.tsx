@@ -72,7 +72,7 @@ const EnhancedPerformanceMetrics = () => {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-2xl font-syne font-bold text-center mb-10">
-          <span className="text-chaotic-blue">⚙️</span> Performance Metrics That Matter
+           Performance Metrics That Matter
         </h2>
         
         <Tabs defaultValue="overview" className="space-y-6" onValueChange={setActiveTab}>

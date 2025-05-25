@@ -6,6 +6,8 @@ import {
   MessageCircle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+
 
 const ResultsSection = () => {
   const results = [
@@ -71,12 +73,14 @@ const ResultsSection = () => {
               <p className="text-2xl md:text-3xl font-syne mb-8 leading-snug">
                 Driving digital revenue for our <span className="text-chaotic-blue">50+ satisfied customers</span>
               </p>
+            <Link to="/work">
               <Button
                 variant="outline"
                 className="rounded-full border border-black text-black hover:bg-black hover:text-white font-kanit px-6 py-3"
               >
                 VIEW OUR CASE STUDIES <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+            </Link>
             </div>
 
             {/* Right - Highlighted Stat */}

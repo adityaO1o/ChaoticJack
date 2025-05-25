@@ -29,7 +29,7 @@ const BlogSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
           <h2 className="text-3xl md:text-4xl font-bold font-syne mb-4 md:mb-0">
-            Digital Marketing & Industry Insights
+            Digital Marketing & <span className="text-chaotic-blue">Industry Insights</span>
           </h2>
           
           <Button 

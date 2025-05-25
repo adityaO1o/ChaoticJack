@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Lightbulb, Users, LayoutDashboard,Phone } from 'lucide-react';
+import { Lightbulb, Users, LayoutDashboard, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react'; 
+import { X } from 'lucide-react';
 
 const ConsultationSection = () => {
   const [formData, setFormData] = useState({ phone: '', email: '' });
   const [submitting, setSubmitting] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
- 
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -53,7 +53,7 @@ const ConsultationSection = () => {
     setSubmitting(false);
   };
 
-  
+
   return (
     <section className="w-full py-20 md:py-28 bg-chaotic-blue/10">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
@@ -68,24 +68,24 @@ const ConsultationSection = () => {
               Our comprehensive marketing audit includes analysis of your target audience, UX evaluation, content audit, and a tailored growth strategy.
             </p>
           </div>
-            <AnimatePresence>
-  {successMsg && (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 20 }}
-      className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-xl shadow-lg z-50 font-kanit flex items-center gap-4"
-    >
-      <span className="flex-1">{successMsg}</span>
-      <button
-        onClick={() => setSuccessMsg('')}
-        className="text-white hover:text-red-600 transition"
-      >
-        <X size={20} />
-      </button>
-    </motion.div>
-  )}
-</AnimatePresence>
+          <AnimatePresence>
+            {successMsg && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-xl shadow-lg z-50 font-kanit flex items-center gap-4"
+              >
+                <span className="flex-1">{successMsg}</span>
+                <button
+                  onClick={() => setSuccessMsg('')}
+                  className="text-white hover:text-red-600 transition"
+                >
+                  <X size={20} />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Audit Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -121,27 +121,27 @@ const ConsultationSection = () => {
           </div>
 
           {/* CTA Button and Email Form */}
-       <div className="text-center mb-10">
-              <h3 className="text-xl font-syne font-bold mb-6">Ready to Grow Your Brand?</h3>
-              <p className="font-kanit mb-6">Let us show you what real digital performance looks like.</p>
-              <div className="flex justify-center mb-4">
-                <a
-                  href="tel:9541457327"
-                  className="
+          <div className="text-center mb-10">
+            <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
+            <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
+            <div className="flex justify-center mb-6">
+              <a
+                href="tel:9541457327"
+                className="
       inline-flex items-center gap-2 px-4 py-2
-      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
       transition-colors duration-200
-      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      hover:bg-black focus:bg-chaotic-blue
       cursor-pointer
     "
-                  aria-label="Call us at 9541457327"
-                >
-                  <Phone className="w-5 h-5" />
-                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
-                </a>
-              </div>
-              {/* Cool Form */}
-             <form
+                aria-label="Call us at 9541457327"
+              >
+                <Phone className="w-5 h-5" />
+                Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+              </a>
+            </div>
+            {/* Cool Form */}
+            <form
               onSubmit={handleSubmit}
               className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
@@ -179,10 +179,12 @@ const ConsultationSection = () => {
             </form>
 
             {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
-
-
+            <div className="flex flex-col items-center mt-4 mb-8">
+              <h3 className="text-sm font-syne font-bold mb-2">
+                A PARTNER NOT A VENDOR
+              </h3>
+            </div>
           </div>
-
         </div>
       </div>
     </section>

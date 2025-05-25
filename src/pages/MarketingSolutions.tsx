@@ -157,7 +157,7 @@ const MarketingSolutions = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold font-syne mb-6">
-                Solutions for Business Growth
+                Solutions for <span className="text-chaotic-blue">Business Growth</span>
               </h1>
               <p className="text-lg font-kanit text-gray-700 mb-8">
                 Chaotic Jack sits at the intersection of creativity and performance. Our team combines innovative thinking with paid media expertise to deliver powerful results and real ROI.
@@ -219,7 +219,7 @@ const MarketingSolutions = () => {
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold font-syne mb-6">
-                Customer-First Strategies That Drive Growth
+                Customer-First Strategies That Drive <span className="text-chaotic-blue">Growth</span>
               </h2>
               <p className="text-lg font-kanit text-gray-700">
                 We don't believe in one-size-fits-all marketing. Instead, we focus on personalized experiences and data-driven solutions to grow your business from the ground up.
@@ -264,8 +264,8 @@ const MarketingSolutions = () => {
         <section className="container mx-auto px-4 md:px-6 py-16">
           <div className=" p-8 md:p-12 rounded-sm">
             <h2 className="text-2xl md:text-3xl font-syne font-bold mb-6 text-center flex items-center justify-center gap-2">
-              <Globe className="text-chaotic-blue" size={24} />
-              We Are Committed to Your Growth
+             
+              We Are <span className="text-chaotic-blue">Commited</span> to Your Growth
             </h2>
             <p className="text-lg font-kanit text-gray-700 text-center mb-10 max-w-3xl mx-auto">
               At Chaotic Jack, we craft digital strategies that deliver. Whether simple or complex, we help brands think bigger, act smarter, and grow faster.
@@ -283,25 +283,27 @@ const MarketingSolutions = () => {
                 </div>
               ))}
             </div>
-             <div className="flex justify-center mb-4">
-                <a
-                  href="tel:9541457327"
-                  className="
+              <div className="text-center mb-10">
+            <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
+            <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
+            <div className="flex justify-center mb-6">
+              <a
+                href="tel:9541457327"
+                className="
       inline-flex items-center gap-2 px-4 py-2
-      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
       transition-colors duration-200
-      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      hover:bg-black focus:bg-chaotic-blue
       cursor-pointer
     "
-                  aria-label="Call us at 9541457327"
-                >
-                  <Phone className="w-5 h-5" />
-                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
-                </a>
-              </div>
-            <div className="text-center">
-              {/* Responsive Form */}
-               <form
+                aria-label="Call us at 9541457327"
+              >
+                <Phone className="w-5 h-5" />
+                Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+              </a>
+            </div>
+            {/* Cool Form */}
+            <form
               onSubmit={handleSubmit}
               className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
@@ -339,9 +341,12 @@ const MarketingSolutions = () => {
             </form>
 
             {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
-
-              <p className="mt-4 text-m font-syne text-gray-700">A Partner, Not Just a Vendor</p>
+            <div className="flex flex-col items-center mt-4 mb-8">
+              <h3 className="text-sm font-syne font-bold mb-2">
+                A PARTNER NOT A VENDOR
+              </h3>
             </div>
+          </div>
           </div>
         </section>
       </main>

@@ -1,6 +1,8 @@
 
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 
 const TeamSection = () => {
   return (
@@ -8,7 +10,7 @@ const TeamSection = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-syne mb-6">
-            The Team Behind Chaotic Jack
+            The Team Behind <br></br> <span className="text-chaotic-blue">Chaotic Jack</span> 
           </h2>
           <p className="text-lg md:text-xl font-kanit text-gray-700">
             Our 15+ member expert team combines creative talent with analytical precision to deliver exceptional marketing results.
@@ -31,11 +33,13 @@ const TeamSection = () => {
               <p className="text-gray-700 font-kanit mb-6">
                 Our diverse team of strategists, creatives, analysts, and developers work together to create integrated marketing solutions that exceed expectations.
               </p>
+              <Link to="/who-we-are">
               <Button 
                 className="rounded-none bg-black text-white border border-white hover:bg-white hover:text-black transition-colors font-kanit"
               >
                 MEET THE TEAM <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -19,6 +19,8 @@ import {
 import { Users2, Eye, Zap, Handshake, Phone } from "lucide-react";
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 
 
 const clients = [
@@ -246,10 +248,10 @@ const Work = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl font-bold font-syne mb-6">
-              Success Stories
+              <span className="text-chaotic-blue">Succes</span> Stories
             </h1>
             <h2 className="text-2xl md:text-3xl font-syne font-medium mb-6">
-              Delivering Real, Measurable Results
+              Delivering <span className="text-chaotic-blue">Real</span>, Measurable <span className="text-chaotic-blue">Results</span>
             </h2>
             <p className="text-lg font-kanit text-gray-700 mb-8">
               When you partner with Chaotic Jack, we handle the heavy lifting — so you can focus on what you do best. From traffic to conversions and revenue, we turn digital strategies into business wins.
@@ -271,7 +273,7 @@ const Work = () => {
         <section className="bg-gray-50 py-12">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-              What Makes Us Different
+              What Makes Us <span className="text-chaotic-blue">Different</span>
             </h2>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto"
@@ -296,7 +298,7 @@ const Work = () => {
         <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-              Our Process: How We Work
+             <span className="text-chaotic-blue">Our Process </span>: How We Work
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8">
               {processSteps.map((step, idx) => (
@@ -342,7 +344,7 @@ const Work = () => {
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
-              Client Success Highlights
+              Client Success <span className="text-chaotic-blue">Highlights</span>
             </h2>
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
@@ -362,12 +364,14 @@ const Work = () => {
               ))}
             </motion.div>
             <div className="text-center">
+             <Link to="/who-we-are">
               <Button
                 variant="outline"
                 className="rounded-none border border-black text-black hover:bg-black hover:text-white transition-colors font-kanit"
               >
                 VIEW OUR FULL PORTFOLIO <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+              </Link> 
             </div>
           </div>
         </section>
@@ -379,7 +383,7 @@ const Work = () => {
         <section className="container mx-auto px-4 md:px-6 py-16">
           <div className=" p-8 md:p-12 rounded-sm">
             <h2 className="text-2xl md:text-3xl font-syne font-bold text-center mb-8">
-              What Our Clients Are Saying
+              What <span className="text-chaotic-blue">Our Clients</span> Are Saying
             </h2>
             <p className="text-center font-kanit text-gray-700 mb-10 max-w-3xl mx-auto">
               With over 5000+ verified client reviews, our results speak for themselves. From global giants to growth-stage startups, businesses trust Chaotic Jack to deliver digital excellence.
@@ -421,65 +425,70 @@ const Work = () => {
                 </div>
               </Carousel>
             </div>
-            <div className="text-center mb-10">
-              <h3 className="text-xl font-syne font-bold mb-6">Ready to Grow Your Brand?</h3>
-              <p className="font-kanit mb-6">Let us show you what real digital performance looks like.</p>
-              <div className="flex justify-center mb-4">
-                <a
-                  href="tel:9541457327"
-                  className="
+             <div className="text-center mb-10">
+            <h3 className="text-xl font-syne font-bold mb-3">Ready to Grow Your Brand?</h3>
+            <p className="text-gray-700 font-kanit text-sm mb-6">Let us show you what real digital performance looks like.</p>
+            <div className="flex justify-center mb-6">
+              <a
+                href="tel:9541457327"
+                className="
       inline-flex items-center gap-2 px-4 py-2
-      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
       transition-colors duration-200
-      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      hover:bg-black focus:bg-chaotic-blue
       cursor-pointer
     "
-                  aria-label="Call us at 9541457327"
-                >
-                  <Phone className="w-5 h-5" />
-                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
-                </a>
-              </div>
-              {/* Cool Form */}
-              <form
-                onSubmit={handleSubmit}
-                className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                aria-label="Call us at 9541457327"
+              >
+                <Phone className="w-5 h-5" />
+                Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+              </a>
+            </div>
+            {/* Cool Form */}
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
                          overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
-              >
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            rounded-t-xl md:rounded-t-none md:rounded-l-xl"
-                  required
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Enter your phone number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            border-t md:border-t-0 md:border-l border-black rounded-none"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
              px-4 py-2 font-kanit w-full md:w-auto 
              rounded-xl"
-                  disabled={submitting}
-                >
-                  {submitting ? 'Submitting...' : 'Submit'}
-                </button>
-              </form>
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
 
-              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+            <div className="flex flex-col items-center mt-4 mb-8">
+              <h3 className="text-sm font-syne font-bold mb-2">
+                A PARTNER NOT A VENDOR
+              </h3>
             </div>
+          </div>
           </div>
         </section>
 

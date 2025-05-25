@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -10,6 +9,7 @@ import WhoWeAre from "./pages/WhoWeAre";
 import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ScrollToTop from "./components/ScrollToTop"; // <-- Import here
 
 const queryClient = new QueryClient();
 
@@ -19,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop /> {/* <-- Add here */}
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/marketing-solutions" element={<MarketingSolutions />} />

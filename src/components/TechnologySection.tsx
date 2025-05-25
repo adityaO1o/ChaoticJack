@@ -114,7 +114,7 @@ const TechnologySection = () => {
           <p className="text-sm uppercase tracking-wider mb-3 font-kanit">
             OUR CUSTOMERS ARE SOME OF THE WORLD'S...
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold font-syne mb-10">Technology we use</h2>
+          <h2 className="text-4xl md:text-5xl font-bold font-syne mb-10"><span className="text-chaotic-blue">Technology</span> we use</h2>
         </div>
 
         <div className="bg-yellow-100 rounded-3xl p-6 md:p-10 shadow-xl">
@@ -174,43 +174,43 @@ const TechnologySection = () => {
 
               {/* Email Form */}
               <form
-              onSubmit={handleSubmit}
-              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                onSubmit={handleSubmit}
+                className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
                          overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
-            >
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleChange}
-                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            rounded-t-xl md:rounded-t-none md:rounded-l-xl"
-                required
-              />
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={handleChange}
-                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
                            border-t md:border-t-0 md:border-l border-black rounded-none"
-                required
-              />
-              <button
-                type="submit"
-                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
              px-4 py-2 font-kanit w-full md:w-auto 
              rounded-xl"
-                disabled={submitting}
-              >
-                {submitting ? 'Submitting...' : 'Submit'}
-              </button>
-            </form>
+                  disabled={submitting}
+                >
+                  {submitting ? 'Submitting...' : 'Submit'}
+                </button>
+              </form>
 
-            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
               
             </div>
           </div>
