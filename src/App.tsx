@@ -12,7 +12,11 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import ReactGA from "react-ga4";
+import TagManager from "react-gtm-module";
 
+const tagManagerArgs = {
+  gtmId: "GTM-XXXXXXX", // Replace with your actual GTM ID
+};
 // Initialize GA only once (outside the component)
 ReactGA.initialize("G-PK2Q0QJ0NV");
 
