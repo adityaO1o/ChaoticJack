@@ -294,20 +294,21 @@ const Work = () => {
           </div>
         </section>
 
-        {/* How We Work / Process Section */}
         <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
               <span className="text-chaotic-blue">Our Process </span>: How We Work
             </h2>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+            {/* Grid: 2 columns on mobile, flex row on md+ */}
+            <div className="grid grid-cols-2 md:flex md:flex-row items-center justify-center gap-8">
               {processSteps.map((step, idx) => (
-                <div key={idx} className="flex flex-col items-center relative min-w-[180px]">
+                <div key={idx} className="flex flex-col items-center relative min-w-[150px]">
                   <div className="bg-white rounded-full p-4 mb-4 shadow-lg flex items-center justify-center">
                     {step.icon}
                   </div>
                   <h4 className="font-syne font-bold text-md mb-1 text-center">{step.title}</h4>
                   <p className="text-gray-700 text-center font-kanit text-sm mb-4">{step.description}</p>
+                  {/* Arrow only on desktop */}
                   {idx < processSteps.length - 1 && (
                     <div className="hidden md:block absolute right-[-60px] top-8">
                       {/* SVG Curved Arrow */}
@@ -340,6 +341,7 @@ const Work = () => {
             </div>
           </div>
         </section>
+
         {/* Client Success Highlights / Portfolio */}
         <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">

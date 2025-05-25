@@ -131,26 +131,27 @@ const Hero = () => {
 
           {/* Right: Images */}
           <motion.div
-            className="flex flex-col gap-4 items-center justify-center w-full"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
-              <img
-                src="/box-2.webp"
-                alt="Facebook Marketing Campaign"
-                className="max-w-full h-auto rounded-xl shadow-md"
-                style={{ width: '100%', maxWidth: 350 }}
-              />
-              <img
-                src="/box-3.webp"
-                alt="Generated Traffic & Leads"
-                className="max-w-full h-auto rounded-xl shadow-md"
-                style={{ width: '100%', maxWidth: 350 }}
-              />
-            </div>
-          </motion.div>
+  className="w-full flex-col gap-4 items-center justify-center hidden sm:flex"
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+>
+  <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+    <img
+      src="/box-2.webp"
+      alt="Facebook Marketing Campaign"
+      className="max-w-full h-auto rounded-xl shadow-md"
+      style={{ width: '100%', maxWidth: 350 }}
+    />
+    <img
+      src="/box-3.webp"
+      alt="Generated Traffic & Leads"
+      className="max-w-full h-auto rounded-xl shadow-md"
+      style={{ width: '100%', maxWidth: 350 }}
+    />
+  </div>
+</motion.div>
+
         </div>
       </div>
     </section>
