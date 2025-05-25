@@ -9,6 +9,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { X } from "lucide-react";
+import WhatsAppButton from "@/components/WhatsAppButton";
+
 
 const Contact = () => {
   const [successMsg, setSuccessMsg] = useState("");
@@ -104,7 +106,7 @@ const Contact = () => {
                       href="mailto:info@consultingmdm.com"
                       className="text-gray-700 font-kanit underline hover:text-chaotic-blue transition"
                     >
-                      chaoticjack.in@gmail.com                   
+                      chaoticjack.in@gmail.com
                     </a>
                   </div>
                 </div>
@@ -205,6 +207,8 @@ const Contact = () => {
         </div>
       </main>
       <Footer />
+      <WhatsAppButton />
+
     </div>
   );
 };

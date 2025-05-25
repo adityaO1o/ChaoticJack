@@ -1,7 +1,6 @@
 import React, { useState, FormEvent } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 import {
   Banknote,
   Search,
@@ -107,8 +106,9 @@ const processSteps = [
 
 const services: Service[] = [
   {
-    name: "Paid Search Marketing",
-    icon: <Banknote className="text-chaotic-blue" size={38} />,
+    name: "Website Development",
+    icon: <Globe className="text-chaotic-blue" size={38} />,
+    
   },
   {
     name: "SEO",
@@ -131,8 +131,8 @@ const services: Service[] = [
     icon: <ShoppingCart className="text-chaotic-blue" size={38} />,
   },
   {
-    name: "Influencer Marketing",
-    icon: <Star className="text-chaotic-blue" size={38} />,
+    name: "Paid Search Marketing",
+    icon: <Banknote className="text-chaotic-blue" size={38} />,
   },
   {
     name: "Amazon Marketing",
@@ -141,10 +141,10 @@ const services: Service[] = [
 ];
 
 const team: TeamMember[] = [
-  { name: "Aditya Sharma", role: "CEO & Founder" },
-  { name: "Stella Boone", role: "Operations Manager" },
-  { name: "Fannie Palmer", role: "VP of Sales" },
-  { name: "Arthur Price", role: "Lead Digital Strategist" },
+  { name: "Aditya Sharma", role: "Founder" },
+  { name: "Ritesh", role: "CEO" },
+  { name: "Yash", role: "VP of Sales" },
+  { name: "Mansi", role: "Lead Digital Strategist" },
 ];
 
 const testimonials = [

@@ -5,9 +5,24 @@ import { ProgressCircle } from '@/components/ui/progress-circle';
 import { cn } from '@/lib/utils';
 
 const ServicesSection = () => {
-  const [activeService, setActiveService] = useState('social');
+  const [activeService, setActiveService] = useState('web');
 
   const services = [
+    {
+      id: 'web',
+      name: 'Website Development',
+      description: 'Create high-performing, conversion-focused websites that deliver exceptional user experiences and drive business growth.',
+      features: [
+        'Responsive design',
+        'SEO-optimized structure',
+        'UI/UX optimization',
+        'Performance tuning',
+        'Analytics integration'
+      ],
+      percentage: 68,
+      percentageText: 'Average increase in lead generation after website redesign'
+    },
+
     {
       id: 'social',
       name: 'Social Media Marketing',
@@ -22,6 +37,7 @@ const ServicesSection = () => {
       percentage: 86,
       percentageText: 'Of customers reported an increase in conversion rates through the social media marketing strategies'
     },
+    
     {
       id: 'seo',
       name: 'Search Engine Optimization',
@@ -50,20 +66,7 @@ const ServicesSection = () => {
       percentage: 92,
       percentageText: 'Average improvement in ROAS for our paid search clients'
     },
-    {
-      id: 'web',
-      name: 'Website Development',
-      description: 'Create high-performing, conversion-focused websites that deliver exceptional user experiences and drive business growth.',
-      features: [
-        'Responsive design',
-        'SEO-optimized structure',
-        'UI/UX optimization',
-        'Performance tuning',
-        'Analytics integration'
-      ],
-      percentage: 68,
-      percentageText: 'Average increase in lead generation after website redesign'
-    }
+    
   ];
 
   const activeServiceData = services.find(service => service.id === activeService) || services[0];
