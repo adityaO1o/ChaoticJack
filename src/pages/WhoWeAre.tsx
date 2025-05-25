@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
-  ArrowRight,
   Banknote,
   Search,
   Mail,
@@ -172,14 +171,55 @@ const fadeUpItem = {
 };
 
 const MainPage: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
+  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setEmail("");
-    setPhone("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    if (!formData.phone || !formData.email) {
+      setErrorMsg('Please fill in all fields.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const formBody = new URLSearchParams({
+      'entry.1517572706': formData.phone,
+      'entry.1991198582': formData.email,
+    });
+
+    try {
+      await fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf87gCG5x4ooYJtjINEXKTnRK5ha5nM9BpZGxHfYOSwOg7x9Q/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+
+      setSuccessMsg('Thank you! Your enquiry has been sent.');
+      setFormData({ phone: '', email: '' });
+
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 3000);
+    } catch (err) {
+      setErrorMsg('Could not connect to server. Please try again.');
+    }
+
+    setSubmitting(false);
+  };
+
 
   return (
     <div className="relative min-h-screen bg-transparent">
@@ -214,7 +254,7 @@ const MainPage: React.FC = () => {
         </section>
 
         {/* WHY CHOOSE US with fade-up animation */}
-        <section className="bg-gray-50 py-12">
+        <section className=" py-12">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-8">
               Why Choose Us
@@ -242,7 +282,7 @@ const MainPage: React.FC = () => {
         </section>
 
         {/* OUR CORE VALUES with interaction */}
-        <section className="py-16">
+        <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
               Our Core Values
@@ -286,7 +326,7 @@ const MainPage: React.FC = () => {
         </section>
 
         {/* HOW WE WORK - interactive map/track with arrows */}
-        <section className="bg-gray-50 py-16">
+        <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10 flex items-center justify-center gap-2">
               <Lightbulb className="text-chaotic-blue" size={24} />
@@ -329,7 +369,7 @@ const MainPage: React.FC = () => {
         </section>
 
         {/* OUR SERVICES with icons/SVGs */}
-        <section className="py-16">
+        <section className="bg-gray-50 py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-10">
               Our Services
@@ -346,7 +386,7 @@ const MainPage: React.FC = () => {
         </section>
 
         {/* TEAM */}
-        <section className="bg-gray-50 py-16">
+        <section className="py-16">
           <div className="container mx-auto px-4 md:px-6">
             <h2 className="text-3xl font-syne font-bold text-center mb-8">
               Meet Our Team
@@ -374,10 +414,10 @@ const MainPage: React.FC = () => {
             </div>
           </div>
         </section>
-
+        <PartnerSection className="mt-10" />
         {/* TESTIMONIALS & CTA */}
         <section className="container mx-auto px-4 md:px-6 py-16">
-          <div className="bg-chaotic-blue/10 p-8 md:p-12 rounded-sm">
+          <div className=" p-8 md:p-12 rounded-sm">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-syne font-bold mb-2 flex items-center justify-center gap-2">
                 <MessageCircle className="text-chaotic-blue" size={22} />
@@ -411,41 +451,68 @@ const MainPage: React.FC = () => {
                 <Phone className="text-chaotic-blue" size={20} />
                 Book a Free Strategy Session
               </h4>
+              <div className="flex justify-center mb-4">
+                <a
+                  href="tel:9541457327"
+                  className="
+      inline-flex items-center gap-2 px-4 py-2
+      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      transition-colors duration-200
+      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      cursor-pointer
+    "
+                  aria-label="Call us at 9541457327"
+                >
+                  <Phone className="w-5 h-5" />
+                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+                </a>
+              </div>
               <p className="font-kanit text-gray-700 mb-4">
                 Ready to grow? Let’s talk about your goals and how we can help you achieve them.
               </p>
-              <form onSubmit={handleSubmit} className="mt-4 flex flex-col md:flex-row gap-2 justify-center items-center max-w-xl mx-auto">
-                <div className="flex-1 w-full">
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full py-2 px-4 border border-gray-300 rounded-l-xl focus:outline-none font-kanit"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </div>
-                <div className="flex-1 w-full">
-                  <input
-                    type="tel"
-                    placeholder="Your Phone"
-                    className="w-full py-2 px-4 border border-gray-300 rounded-r-xl focus:outline-none font-kanit"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </div>
-                <Button
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                         flex flex-col md:flex-row gap-2 md:gap-0
+                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           border-t md:border-t-0 md:border-l border-black rounded-none"
+                  required
+                />
+                <button
                   type="submit"
-                  className="bg-chaotic-blue text-white px-8 py-2 rounded-xl font-kanit hover:bg-chaotic-blue/90 transition-colors"
+                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+             px-4 py-2 font-kanit w-full md:w-auto 
+             rounded-xl"
+                  disabled={submitting}
                 >
-                  <Mail className="mr-2 h-4 w-4" /> Get My Free Plan
-                </Button>
+                  {submitting ? 'Submitting...' : 'Submit'}
+                </button>
               </form>
+
+              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
             </div>
           </div>
         </section>
 
-        <PartnerSection className="mt-10" />
+
       </main>
 
       <Footer />

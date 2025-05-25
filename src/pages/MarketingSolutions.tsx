@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PartnerSection from "@/components/PartnerSection";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -12,10 +13,13 @@ import {
   Star,
   Package,
   Lightbulb,
-  Globe
+  Globe,
+  Phone
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react'
 
 const services = [
   {
@@ -76,17 +80,76 @@ const stats = [
 ];
 
 const MarketingSolutions = () => {
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitted:', { email, phone });
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    if (!formData.phone || !formData.email) {
+      setErrorMsg('Please fill in all fields.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const formBody = new URLSearchParams({
+      'entry.1517572706': formData.phone,
+      'entry.1991198582': formData.email,
+    });
+
+    try {
+      await fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf87gCG5x4ooYJtjINEXKTnRK5ha5nM9BpZGxHfYOSwOg7x9Q/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+
+      setSuccessMsg('Thank you! Your enquiry has been sent.');
+      setFormData({ phone: '', email: '' });
+
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 3000);
+    } catch (err) {
+      setErrorMsg('Could not connect to server. Please try again.');
+    }
+
+    setSubmitting(false);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-yellow-400/50 via-chaotic-blue/20 to-transparent relative">
       <Navbar />
+      <AnimatePresence>
+        {successMsg && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-xl shadow-lg z-50 font-kanit flex items-center gap-4"
+          >
+            <span className="flex-1">{successMsg}</span>
+            <button
+              onClick={() => setSuccessMsg('')}
+              className="text-white hover:text-red-600 transition"
+            >
+              <X size={20} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <main className="pt-28 pb-16">
         {/* HERO SECTION */}
@@ -100,50 +163,45 @@ const MarketingSolutions = () => {
                 Chaotic Jack sits at the intersection of creativity and performance. Our team combines innovative thinking with paid media expertise to deliver powerful results and real ROI.
               </p>
               {/* Responsive Form */}
-              <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
-                <div
-                  className="
-      bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg
-      flex flex-col md:flex-row gap-2 md:gap-0
-      overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
-    "
+              <form
+                onSubmit={handleSubmit}
+                className="bg-white p-3 rounded-[20px_20px_0px_20px] border-2 border-black shadow-lg
+                         flex flex-col md:flex-row gap-2 md:gap-0
+                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+              >
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           border-t md:border-t-0 md:border-l border-black rounded-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+             px-4 py-2 font-kanit w-full md:w-auto 
+             rounded-xl"
+                  disabled={submitting}
                 >
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="
-        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-        rounded-t-xl md:rounded-t-none md:rounded-l-xl
-      "
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-
-                  <input
-                    type="tel"
-                    placeholder="Phone"
-                    className="
-        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-        border-t md:border-t-0 md:border-l border-black
-        rounded-none
-      "
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-
-                  <button
-                    type="submit"
-                    className="
-        bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
-        px-4 font-kanit w-full md:w-auto
-        rounded-b-xl md:rounded-b-none md:rounded-r-xl
-      "
-                  >
-                    GET A FREE AUDIT
-                  </button>
-                </div>
+                  {submitting ? 'Submitting...' : 'Submit'}
+                </button>
               </form>
+
+              {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+
             </div>
             <div className="relative h-[400px] rounded-md overflow-hidden shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-chaotic-blue/40 to-transparent z-20"></div>
@@ -199,10 +257,12 @@ const MarketingSolutions = () => {
             </div>
           </div>
         </section>
+        {/* Partners */}
+        <PartnerSection className="mt-10" />
 
         {/* STATS & CTA SECTION */}
         <section className="container mx-auto px-4 md:px-6 py-16">
-          <div className="bg-chaotic-blue/10 p-8 md:p-12 rounded-sm">
+          <div className=" p-8 md:p-12 rounded-sm">
             <h2 className="text-2xl md:text-3xl font-syne font-bold mb-6 text-center flex items-center justify-center gap-2">
               <Globe className="text-chaotic-blue" size={24} />
               We Are Committed to Your Growth
@@ -223,52 +283,63 @@ const MarketingSolutions = () => {
                 </div>
               ))}
             </div>
+             <div className="flex justify-center mb-4">
+                <a
+                  href="tel:9541457327"
+                  className="
+      inline-flex items-center gap-2 px-4 py-2
+      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      transition-colors duration-200
+      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      cursor-pointer
+    "
+                  aria-label="Call us at 9541457327"
+                >
+                  <Phone className="w-5 h-5" />
+                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+                </a>
+              </div>
             <div className="text-center">
               {/* Responsive Form */}
-              <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
-                <div
-                  className="
-      bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg
-      flex flex-col md:flex-row gap-2 md:gap-0
-      overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
-    "
-                >
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="
-        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-        rounded-t-xl md:rounded-t-none md:rounded-l-xl
-      "
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
+               <form
+              onSubmit={handleSubmit}
+              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                         flex flex-col md:flex-row gap-2 md:gap-0
+                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           border-t md:border-t-0 md:border-l border-black rounded-none"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+             px-4 py-2 font-kanit w-full md:w-auto 
+             rounded-xl"
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
 
-                  <input
-                    type="tel"
-                    placeholder="Phone"
-                    className="
-        flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-        border-t md:border-t-0 md:border-l border-black
-        rounded-none
-      "
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
+            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
 
-                  <button
-                    type="submit"
-                    className="
-        bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
-        px-4 font-kanit w-full md:w-auto
-        rounded-b-xl md:rounded-b-none md:rounded-r-xl
-      "
-                  >
-                    GET A FREE AUDIT
-                  </button>
-                </div>
-              </form>
               <p className="mt-4 text-m font-syne text-gray-700">A Partner, Not Just a Vendor</p>
             </div>
           </div>

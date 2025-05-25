@@ -4,7 +4,10 @@ import { Button } from '@/components/ui/button';
 
 const TechnologySection = () => {
   const [startIndex, setStartIndex] = useState(0);
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [visibleCount, setVisibleCount] = useState(1); // Default to 1 for mobile
 
   const techLogos = [
@@ -59,11 +62,50 @@ const TechnologySection = () => {
       setStartIndex(startIndex - 1);
     }
   };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setEmail('');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    if (!formData.phone || !formData.email) {
+      setErrorMsg('Please fill in all fields.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const formBody = new URLSearchParams({
+      'entry.1517572706': formData.phone,
+      'entry.1991198582': formData.email,
+    });
+
+    try {
+      await fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf87gCG5x4ooYJtjINEXKTnRK5ha5nM9BpZGxHfYOSwOg7x9Q/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+
+      setSuccessMsg('Thank you! Your enquiry has been sent.');
+      setFormData({ phone: '', email: '' });
+
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 3000);
+    } catch (err) {
+      setErrorMsg('Could not connect to server. Please try again.');
+    }
+
+    setSubmitting(false);
+  };
+
+
 
   return (
     <section className="py-20 relative overflow-hidden bg-gradient-to-br from-chaotic-blue/10 via-yellow-50 to-white">
@@ -131,38 +173,45 @@ const TechnologySection = () => {
               </div>
 
               {/* Email Form */}
-              <form onSubmit={handleSubmit} className="mt-4 w-full flex justify-center">
-                <div className="
-                  w-full max-w-full sm:max-w-md
-                  bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg
-                  flex flex-col sm:flex-row gap-2 sm:gap-0
-                  transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
-                ">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    className="
-                      flex-1 py-2 px-4 focus:outline-none
-                      rounded-t-xl sm:rounded-t-none sm:rounded-l-xl font-kanit
-                      bg-white border border-gray-200
-                      focus:ring-2 focus:ring-chaotic-blue
-                      transition
-                    "
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                  <Button
-                    type="submit"
-                    className="
-                      bg-black text-white border-none hover:bg-chaotic-blue transition-colors
-                      rounded-b-xl sm:rounded-b-none sm:rounded-r-xl px-8 font-kanit w-full sm:w-auto
-                    "
-                  >
-                    NEXT
-                  </Button>
-                </div>
-              </form>
+              <form
+              onSubmit={handleSubmit}
+              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                         flex flex-col md:flex-row gap-2 md:gap-0
+                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           border-t md:border-t-0 md:border-l border-black rounded-none"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+             px-4 py-2 font-kanit w-full md:w-auto 
+             rounded-xl"
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+
+            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
+              
             </div>
           </div>
         </div>

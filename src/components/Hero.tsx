@@ -145,7 +145,7 @@ const Hero = () => {
             {/* Form */}
             <form
               onSubmit={handleSubmit}
-              className="bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg
+              className="bg-white p-3 rounded-[20px_20px_0px_20px] border-2 border-black shadow-lg
                          flex flex-col md:flex-row gap-2 md:gap-0
                          overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
             >

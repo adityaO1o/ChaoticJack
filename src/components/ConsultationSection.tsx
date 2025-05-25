@@ -1,15 +1,59 @@
 import { useState } from 'react';
-import { Lightbulb, Users, LayoutDashboard } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Lightbulb, Users, LayoutDashboard,Phone } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react'; 
 
 const ConsultationSection = () => {
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({ phone: '', email: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+ 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Email submitted:', email);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSuccessMsg('');
+    setErrorMsg('');
+
+    if (!formData.phone || !formData.email) {
+      setErrorMsg('Please fill in all fields.');
+      return;
+    }
+
+    setSubmitting(true);
+
+    const formBody = new URLSearchParams({
+      'entry.1517572706': formData.phone,
+      'entry.1991198582': formData.email,
+    });
+
+    try {
+      await fetch('https://docs.google.com/forms/u/0/d/e/1FAIpQLSf87gCG5x4ooYJtjINEXKTnRK5ha5nM9BpZGxHfYOSwOg7x9Q/formResponse', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formBody.toString(),
+      });
+
+      setSuccessMsg('Thank you! Your enquiry has been sent.');
+      setFormData({ phone: '', email: '' });
+
+      setTimeout(() => {
+        setSuccessMsg('');
+      }, 3000);
+    } catch (err) {
+      setErrorMsg('Could not connect to server. Please try again.');
+    }
+
+    setSubmitting(false);
+  };
+
+  
   return (
     <section className="w-full py-20 md:py-28 bg-chaotic-blue/10">
       <div className="max-w-screen-2xl mx-auto px-4 md:px-8">
@@ -24,6 +68,24 @@ const ConsultationSection = () => {
               Our comprehensive marketing audit includes analysis of your target audience, UX evaluation, content audit, and a tailored growth strategy.
             </p>
           </div>
+            <AnimatePresence>
+  {successMsg && (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 20 }}
+      className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-black text-white px-6 py-3 rounded-xl shadow-lg z-50 font-kanit flex items-center gap-4"
+    >
+      <span className="flex-1">{successMsg}</span>
+      <button
+        onClick={() => setSuccessMsg('')}
+        className="text-white hover:text-red-600 transition"
+      >
+        <X size={20} />
+      </button>
+    </motion.div>
+  )}
+</AnimatePresence>
 
           {/* Audit Features */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -59,46 +121,64 @@ const ConsultationSection = () => {
           </div>
 
           {/* CTA Button and Email Form */}
-          <form onSubmit={handleSubmit} className="mt-4 animate-slide-up">
-            <div className="w-full flex justify-center">
-              <div
-                className="
-        w-full max-w-md 
-        bg-white p-3 rounded-[20px_20px_20px_0px] border-2 border-black shadow-lg 
-        flex flex-col md:flex-row gap-2 md:gap-0
-        transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
-      "
-              >
-                <input
-                  type="email"
-                  placeholder="Email"
+       <div className="text-center mb-10">
+              <h3 className="text-xl font-syne font-bold mb-6">Ready to Grow Your Brand?</h3>
+              <p className="font-kanit mb-6">Let us show you what real digital performance looks like.</p>
+              <div className="flex justify-center mb-4">
+                <a
+                  href="tel:9541457327"
                   className="
-          flex-1 py-2 px-4 focus:outline-none 
-          rounded-t-xl md:rounded-t-none md:rounded-l-xl font-kanit
-        "
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-                <Button
-                  type="submit"
-                  className="
-          bg-black text-white border-none hover:bg-chaotic-blue transition-colors
-          rounded-b-xl md:rounded-b-none md:rounded-r-xl px-8 font-kanit w-full md:w-auto
-        "
+      inline-flex items-center gap-2 px-4 py-2
+      bg-black rounded-[10px_10px_10px_10px] border-2 border-white text-white font-bold text-base shadow-lg tracking-wide 
+      transition-colors duration-200
+      hover:bg-chaotic-blue focus:bg-chaotic-blue
+      cursor-pointer
+    "
+                  aria-label="Call us at 9541457327"
                 >
-                  NEXT
-                </Button>
+                  <Phone className="w-5 h-5" />
+                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+                </a>
               </div>
-            </div>
-          </form>
-
-          <div className="text-center">
-            <Button
-              className="bg-chaotic-blue text-white hover:bg-black hover:text-white transition px-10 py-6 rounded-full text-lg font-kanit shadow-lg mb-6"
+              {/* Cool Form */}
+             <form
+              onSubmit={handleSubmit}
+              className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
+                         flex flex-col md:flex-row gap-2 md:gap-0
+                         overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
             >
-              Get Your Free Audit
-            </Button>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                value={formData.phone}
+                onChange={handleChange}
+                className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
+                           border-t md:border-t-0 md:border-l border-black rounded-none"
+                required
+              />
+              <button
+                type="submit"
+                className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
+             px-4 py-2 font-kanit w-full md:w-auto 
+             rounded-xl"
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+
+            {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
 
 
           </div>
