@@ -22,16 +22,13 @@ import { useState } from "react";
 import { motion, AnimatePresence } from 'framer-motion';
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-
 const services = [
   {
     title: "Website Development",
     description:
       "We craft responsive, user-friendly websites tailored to your brand's needs. From design to deployment, we ensure a seamless digital presence.",
     icon: <Globe className="text-chaotic-blue" size={28} />
-
   },
-  
   {
     title: "Paid Search Marketing",
     description:
@@ -89,6 +86,26 @@ const MarketingSolutions = () => {
   const [successMsg, setSuccessMsg] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
+  // Function to handle WhatsApp message for service inquiry
+  const handleServiceInquiry = (service) => {
+    const message = `Hi! I'm interested in learning more about your ${service.title} service.
+
+Service Details:
+${service.description}
+
+Please provide more information about:
+- Pricing
+- Timeline
+- Process
+- Portfolio examples
+
+Looking forward to hearing from you!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/919541457327?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -247,7 +264,11 @@ const MarketingSolutions = () => {
                             <div>
                               <h4 className="text-xl font-syne font-bold mb-2">{service.title}</h4>
                               <p className="text-gray-700 font-kanit mb-4">{service.description}</p>
-                              <Button variant="link" className="p-0 h-auto font-kanit text-chaotic-blue hover:text-chaotic-blue/80">
+                              <Button 
+                                variant="link" 
+                                className="p-0 h-auto font-kanit text-chaotic-blue hover:text-chaotic-blue/80"
+                                onClick={() => handleServiceInquiry(service)}
+                              >
                                 LEARN MORE <ArrowRight className="ml-1 h-3 w-3" />
                               </Button>
                             </div>
@@ -261,6 +282,7 @@ const MarketingSolutions = () => {
             </div>
           </div>
         </section>
+        
         {/* Partners */}
         <PartnerSection className="mt-10" />
 
@@ -268,8 +290,7 @@ const MarketingSolutions = () => {
         <section className="container mx-auto px-4 md:px-6 py-16">
           <div className=" p-8 md:p-12 rounded-sm">
             <h2 className="text-2xl md:text-3xl font-syne font-bold mb-6 text-center flex items-center justify-center gap-2">
-
-              We Are <span className="text-chaotic-blue">Commited</span> to Your Growth
+              We Are <span className="text-chaotic-blue">Committed</span> to Your Growth
             </h2>
             <p className="text-lg font-kanit text-gray-700 text-center mb-10 max-w-3xl mx-auto">
               At Chaotic Jack, we craft digital strategies that deliver. Whether simple or complex, we help brands think bigger, act smarter, and grow faster.
@@ -293,28 +314,17 @@ const MarketingSolutions = () => {
               <div className="flex justify-center mb-6">
                 <a
                   href="tel:9541457327"
-                  className="
-      inline-flex items-center gap-2 px-4 py-2
-      bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide 
-      transition-colors duration-200
-      hover:bg-black focus:bg-chaotic-blue
-      cursor-pointer
-    "
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-chaotic-blue rounded-[10px_10px_10px_10px] text-white font-bold text-base shadow-lg tracking-wide transition-colors duration-200 hover:bg-black focus:bg-chaotic-blue cursor-pointer"
                   aria-label="Call us at 9541457327"
                 >
                   <Phone className="w-5 h-5" />
-                  Let’s Talk – <span className="font-mono tracking-tight">9541457327</span>
+                  Let's Talk – <span className="font-mono tracking-tight">9541457327</span>
                 </a>
               </div>
               {/* Cool Form */}
               <form
                 onSubmit={handleSubmit}
-                className="
-    bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg
-    flex flex-col md:flex-row gap-2 md:gap-0
-    overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]
-    w-full md:w-[50vw] mx-auto
-  "
+                className="bg-white p-3 rounded-[20px_20px_20px_20px] border-2 border-black shadow-lg flex flex-col md:flex-row gap-2 md:gap-0 overflow-hidden transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02] w-full md:w-[50vw] mx-auto"
               >
                 <input
                   type="email"
@@ -322,8 +332,7 @@ const MarketingSolutions = () => {
                   placeholder="Enter your email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-               rounded-t-xl md:rounded-t-none md:rounded-l-xl"
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500 rounded-t-xl md:rounded-t-none md:rounded-l-xl"
                   required
                 />
                 <input
@@ -332,21 +341,17 @@ const MarketingSolutions = () => {
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500
-               border-t md:border-t-0 md:border-l border-black rounded-none"
+                  className="flex-1 py-2 px-4 focus:outline-none font-kanit text-black placeholder-gray-500 border-t md:border-t-0 md:border-l border-black rounded-none"
                   required
                 />
                 <button
                   type="submit"
-                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors
-               px-4 py-2 font-kanit w-full md:w-auto 
-               rounded-xl"
+                  className="bg-black text-sm text-white border-none hover:bg-chaotic-blue transition-colors px-4 py-2 font-kanit w-full md:w-auto rounded-xl"
                   disabled={submitting}
                 >
                   {submitting ? 'Submitting...' : 'Submit'}
                 </button>
               </form>
-
 
               {errorMsg && <p className="text-red-600 text-sm mt-2">{errorMsg}</p>}
               <div className="flex flex-col items-center mt-4 mb-8">
@@ -360,7 +365,6 @@ const MarketingSolutions = () => {
       </main>
       <Footer />
       <WhatsAppButton />
-
     </div>
   );
 };
