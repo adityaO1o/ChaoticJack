@@ -34,7 +34,7 @@ const clients = [
     url: "https://hygearfashion.com/",
     result: "+65% Online Sales Growth",
     services: ["E-commerce Development", "SEO", "Social Media Marketing"],
-    image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/hygear.webp",
     description: "A comprehensive fashion e-commerce platform providing trendy clothing solutions for modern consumers.",
     completed: "2024",
     challenge: "Built a scalable e-commerce platform with advanced inventory management and seamless payment integration.",
@@ -47,7 +47,7 @@ const clients = [
     url: "https://oxygen4india.com/",
     result: "+80% Lead Generation",
     services: ["Healthcare Platform", "SEO", "Content Marketing"],
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/oxygen.png",
     description: "Critical healthcare platform connecting patients with oxygen suppliers during emergency situations.",
     completed: "2024",
     challenge: "Developed a real-time platform to handle urgent healthcare requests with location-based services.",
@@ -60,7 +60,7 @@ const clients = [
     url: "https://longfianindia.com/",
     result: "+45% Market Reach",
     services: ["Corporate Website", "SEO", "Digital Marketing"],
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/longfian.png",
     description: "Leading medical equipment manufacturer specializing in oxygen concentrators and healthcare solutions.",
     completed: "2023",
     challenge: "Created a professional corporate website showcasing complex medical products with technical specifications.",
@@ -73,7 +73,7 @@ const clients = [
     url: "http://goldlineintertrade.store/",
     result: "+55% Online Revenue",
     services: ["E-commerce Store", "Payment Gateway", "Inventory Management"],
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/goldline.png",
     description: "International trading platform specializing in precious metals and commodities exchange.",
     completed: "2024",
     challenge: "Built a secure trading platform with real-time price updates and multi-currency support.",
@@ -86,7 +86,7 @@ const clients = [
     url: "https://roadies-koffe-houz.vercel.app/",
     result: "+70% Online Orders",
     services: ["Restaurant Website", "Online Ordering", "Brand Identity"],
-    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/roadies.png",
     description: "Modern coffee house platform offering premium coffee experiences with online ordering system.",
     completed: "2024",
     challenge: "Developed an engaging cafe website with seamless online ordering and table reservation system.",
@@ -99,7 +99,7 @@ const clients = [
     url: "https://hamylten.com/",
     result: "+60% Customer Engagement",
     services: ["Corporate Branding", "Web Development", "Digital Strategy"],
-    image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2126&q=80",
+    image: "/hamylten.png",
     description: "Professional consulting firm providing innovative business solutions and strategic advisory services.",
     completed: "2023",
     challenge: "Created a sophisticated corporate identity with a modern website reflecting professionalism and expertise.",
@@ -112,7 +112,7 @@ const clients = [
     url: "https://mdmconsulting.in/",
     result: "+50% Lead Quality",
     services: ["Professional Services", "SEO", "Content Strategy"],
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/mdm.png",
     description: "Strategic consulting firm specializing in business transformation and organizational development.",
     completed: "2024",
     challenge: "Designed a professional platform showcasing complex consulting services with clear value propositions.",
@@ -125,7 +125,7 @@ const clients = [
     url: "https://vidflyy-main.vercel.app/",
     result: "+85% User Engagement",
     services: ["Video Platform", "Streaming Technology", "UI/UX Design"],
-    image: "https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2062&q=80",
+    image: "/vidflyy.png",
     description: "Innovative video streaming platform providing seamless content delivery and interactive experiences.",
     completed: "2024",
     challenge: "Built a scalable video platform with adaptive streaming and real-time user interactions.",
@@ -138,7 +138,7 @@ const clients = [
     url: "https://dukaan-steel.vercel.app/",
     result: "+40% B2B Sales",
     services: ["Industrial Website", "Catalog Management", "B2B Portal"],
-    image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80",
+    image: "/dukaan.png",
     description: "Industrial steel trading platform connecting manufacturers with distributors and end customers.",
     completed: "2024",
     challenge: "Developed a robust B2B platform with complex pricing structures and bulk order management.",
@@ -151,7 +151,7 @@ const clients = [
     url: "https://kdengineers.in/",
     result: "+35% Project Inquiries",
     services: ["Engineering Services", "Portfolio Website", "SEO"],
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/kd.png",
     description: "Professional engineering consultancy providing innovative solutions for infrastructure projects.",
     completed: "2023",
     challenge: "Created a technical portfolio website showcasing complex engineering projects and capabilities.",
@@ -164,7 +164,7 @@ const clients = [
     url: "https://innotecindia.in/",
     result: "+55% Technology Adoption",
     services: ["Tech Solutions", "Innovation Platform", "Digital Transformation"],
-    image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2025&q=80",
+    image: "/innotech.png",
     description: "Leading technology innovation company providing cutting-edge solutions for digital transformation.",
     completed: "2024",
     challenge: "Built a modern tech platform showcasing innovative solutions with interactive demos.",
@@ -177,7 +177,7 @@ const clients = [
     url: "https://nainavoltenergy.com/",
     result: "+75% Green Energy Adoption",
     services: ["Renewable Energy", "Sustainability Platform", "Green Tech"],
-    image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/naina.png",
     description: "Sustainable energy solutions provider focusing on solar power and renewable energy systems.",
     completed: "2024",
     challenge: "Developed an educational platform promoting renewable energy with cost calculators and ROI tools.",
@@ -190,7 +190,7 @@ const clients = [
     url: "https://smartworldgems.in/",
     result: "+90% Luxury Sales",
     services: ["Luxury E-commerce", "Jewelry Catalog", "Premium Branding"],
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/smartworld.png",
     description: "Premium jewelry and gemstone retailer offering exquisite collections with authentic certifications.",
     completed: "2023",
     challenge: "Created a luxury e-commerce experience with high-quality imagery and secure payment systems.",
@@ -203,7 +203,7 @@ const clients = [
     url: "https://asprecision.in/",
     result: "+45% Manufacturing Orders",
     services: ["Manufacturing Website", "Precision Engineering", "B2B Platform"],
-    image: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/asp.png",
     description: "Precision manufacturing company specializing in high-quality components for automotive and aerospace industries.",
     completed: "2024",
     challenge: "Developed a technical showcase platform highlighting precision capabilities and quality standards.",
@@ -216,7 +216,7 @@ const clients = [
     url: "https://shimmerfarms.in/",
     result: "+60% Organic Produce Sales",
     services: ["Agriculture Platform", "Organic Farming", "Farm-to-Table"],
-    image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2014&q=80",
+    image: "/shipfarmer.png",
     description: "Sustainable agriculture platform connecting organic farmers directly with health-conscious consumers.",
     completed: "2024",
     challenge: "Built a farm-to-table platform with fresh produce tracking and subscription management.",
@@ -229,7 +229,7 @@ const clients = [
     url: "https://eyeconicoptical.in/",
     result: "+50% Eyewear Sales",
     services: ["Optical Store", "Virtual Try-on", "Eye Care Platform"],
-    image: "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    image: "/eye.webp",
     description: "Modern optical store offering premium eyewear with advanced virtual try-on technology and eye care services.",
     completed: "2023",
     challenge: "Integrated virtual try-on technology with comprehensive eye care services and appointment booking.",
@@ -657,12 +657,12 @@ const Work = () => {
               ))}
             </motion.div>
             <div className="text-center">
-              <Link to="/who-we-are">
+              <Link to="/contact">
                 <Button
                   variant="outline"
                   className="rounded-none border border-black text-black hover:bg-black hover:text-white transition-colors font-kanit"
                 >
-                  VIEW OUR FULL PORTFOLIO <ArrowRight className="ml-2 h-4 w-4" />
+                  START YOUR PROJECT <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
             </div>
