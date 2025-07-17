@@ -11,13 +11,15 @@ import BlogSection from "@/components/BlogSection";
 import ConsultationSection from "@/components/ConsultationSection";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import BiggestProjectsSection from "@/components/BiggestProjectsSection";
+
 import { motion } from 'framer-motion';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -26,6 +28,8 @@ const Index = () => {
         <Hero />
         <PartnerSection />
         <WhatWeDoSection />
+        <BiggestProjectsSection />
+
         <ServicesSection />
         <TechnologySection />
         <ResultsSection />
@@ -33,7 +37,7 @@ const Index = () => {
         <BlogSection />
         <ConsultationSection />
       </motion.main>
-      
+
       <Footer />
       <WhatsAppButton />
     </div>
